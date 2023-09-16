@@ -27,6 +27,7 @@ namespace backend
         {
             services.AddControllers();
             services.AddSwaggerGen();
+            services.AddHttpClient<ExternalApiService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

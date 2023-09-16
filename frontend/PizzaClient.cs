@@ -25,7 +25,7 @@ namespace frontend
       public async Task<PizzaInfo[]> GetPizzasAsync()
       {
          try {
-            var responseMessage = await this.client.GetAsync("http://ip172-19-0-67-cjsuel0gftqg008csm80-5200.direct.labs.play-with-docker.com/pizzainfo");
+            var responseMessage = await this.client.GetAsync("http://ip172-18-0-44-ck26mdksnmng00bp0ep0-80.direct.labs.play-with-docker.com/pizzainfo");
             
             if(responseMessage!=null)
             {
@@ -35,7 +35,7 @@ namespace frontend
          }
          catch(HttpRequestException ex)
          {
-            _logger.LogError(ex.Message);
+            _logger.LogError($"Error deserializing JSON: {ex.Message}");
             throw;
          }
          return new PizzaInfo[] {};

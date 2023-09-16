@@ -11,21 +11,20 @@ namespace frontend.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        public PizzaInfo[] Pizzas { get; set; }
+        public GiftenorResult[] GiftenorResults { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public string ErrorMessage {get;set;}
-        
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
         }
 
-        public async Task OnGet([FromServices]PizzaClient client)
+        public async Task OnGet([FromServices]GiftenorClient client)
         {
-            Pizzas = await client.GetPizzasAsync();
-            
-            if(Pizzas.Count()==0)
-                ErrorMessage="We must be sold out. Try again tomorrow.";
+            GiftenorResults = await client.GetGiftenorAsync();
+
+            if (GiftenorResults.Length == 0)
+                ErrorMessage = "No Giftenor results found.";
             else
                 ErrorMessage = string.Empty;
         }
