@@ -1,32 +1,77 @@
 @page
 @model IndexModel
 @{
-    ViewData["Title"] = "Giftenor GIFs";
+    ViewData["Title"] = "Chimpokomon ";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Giftenor GIFs</h1>
-    <p>Explore exciting GIFs from Giftenor.</p>
-</div>
-
-<div style="color: #D8000C; background-color: #FFBABA">
-    @Model.ErrorMessage
-</div>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Content Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var gif in Model.GiftenorResults)
-        {
-            <tr>
-                <td>@gif.Id</td>
-                <td>@gif.Content_Description</td>
-            </tr>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #F0F0F0;
+            font-family: Arial, sans-serif;
         }
-    </tbody>
-</table>
+        .header {
+            text-align: center;
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+        }
+        .error-message {
+            color: #D8000C;
+            background-color: #FFBABA;
+            padding: 10px;
+            margin: 10px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px;
+        }
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .table th {
+            background-color: #007BFF;
+            color: white;
+        }
+        .table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="display-4">Chimpokomon </h1>
+        <p>Debo Comprar Chimpokomon!!!! gato lanudo, burrotron , pinwino ,zapato , coleccionalos todos y seras coronado como maestro chimpokomon !!</p>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="error-message">
+            @Model.ErrorMessage
+        </div>
+    }
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Url</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var gif in Model.GiftenorResults)
+            {
+                <tr>
+                    <td>@gif.Name</td>
+                    <td>@gif.Url</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

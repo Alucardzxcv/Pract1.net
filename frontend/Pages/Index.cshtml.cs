@@ -11,7 +11,7 @@ namespace frontend.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        public GiftenorResult[] GiftenorResults { get; set; }
+        public PokemonResult[] GiftenorResults { get; set; }
         public string ErrorMessage { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger)
@@ -19,7 +19,7 @@ namespace frontend.Pages
             _logger = logger;
         }
 
-        public async Task OnGet([FromServices]GiftenorClient client)
+        public async Task OnGet([FromServices]PokemonClient client)
         {
             GiftenorResults = await client.GetGiftenorAsync();
 

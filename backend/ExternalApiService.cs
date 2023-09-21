@@ -13,7 +13,7 @@ public class ExternalApiService
 
     public async Task<string> GetExternalApiData()
     {
-        var response = await _httpClient.GetStringAsync("https://g.tenor.com/v1/search?q=exciteds&key=LIVDSRZULELA&limit=8");
+        var response = await _httpClient.GetStringAsync("https://pokeapi.co/api/v2/pokemon");
         return response;
     }
 }

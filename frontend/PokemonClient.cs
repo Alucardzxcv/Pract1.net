@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace frontend
 {
-   public class GiftenorClient
+   public class PokemonClient
    {
       private readonly JsonSerializerOptions options = new JsonSerializerOptions()
       {
@@ -14,24 +14,24 @@ namespace frontend
       };
 
       private readonly HttpClient client;
-      private readonly ILogger<GiftenorClient> _logger;
+      private readonly ILogger<PokemonClient> _logger;
 
-      public GiftenorClient(HttpClient client, ILogger<GiftenorClient> logger)
+      public PokemonClient(HttpClient client, ILogger<PokemonClient> logger)
       {
          this.client = client;
          this._logger = logger;
       }
 
-      public async Task<GiftenorResult[]> GetGiftenorAsync()
+      public async Task<PokemonResult[]> GetGiftenorAsync()
 {
     try
     {
-        var responseMessage = await this.client.GetAsync("http://ip172-18-0-15-ck2up9mfml8g00aplcng-80.direct.labs.play-with-docker.com/api/externaldata");
+        var responseMessage = await this.client.GetAsync("http://localhost:5900/pokemon");
 
         if (responseMessage != null && responseMessage.IsSuccessStatusCode)
         {
             var content = await responseMessage.Content.ReadAsStringAsync();
-            var giftenorResponse = JsonSerializer.Deserialize<GiftenorResponse>(content, options);
+            var giftenorResponse = JsonSerializer.Deserialize<PokemonResponse>(content, options);
 
             if (giftenorResponse != null)
             {
@@ -44,7 +44,7 @@ namespace frontend
         _logger.LogError($"Error deserializing JSON: {ex.Message}");
         throw;
     }
-    return new GiftenorResult[] { };
+    return new PokemonResult[] { };
 }
 
    }

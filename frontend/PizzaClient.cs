@@ -25,7 +25,7 @@ namespace frontend
       public async Task<PizzaInfo[]> GetPizzasAsync()
       {
          try {
-            var responseMessage = await this.client.GetAsync("http://ip172-18-0-44-ck26mdksnmng00bp0ep0-80.direct.labs.play-with-docker.com/pizzainfo");
+            var responseMessage = await this.client.GetAsync("http://ip172-18-0-14-ck5nftcsnmng00f5a7m0-5200.direct.labs.play-with-docker.com/api/externaldata");
             
             if(responseMessage!=null)
             {

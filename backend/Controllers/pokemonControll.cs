@@ -12,7 +12,7 @@ namespace backend.Controllers
 {
 
 [ApiController]
-[Route("api/externaldata")]
+[Route("pokemon")]
 public class ExternalDataController : ControllerBase
 {
     private readonly ExternalApiService _externalApiService;

@@ -25,7 +25,7 @@ namespace frontend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddHttpClient<GiftenorClient>();
+            services.AddHttpClient<PokemonClient>();
 
             services.AddHttpClient<PizzaClient>(client => 
             {
